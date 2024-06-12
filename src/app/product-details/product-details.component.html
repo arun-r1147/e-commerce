@@ -1,0 +1,15 @@
+<div class="parent-container">
+ <span></span>
+  <div class="product">
+    <img [src]="product.image??''" [alt]="product.title" />
+    <div class="product-details">
+      <h2>{{ product.title }}</h2>
+      <p>{{ product.description }}</p>
+      <h5>Rating: {{ product.rating.rate }}({{ product.rating.count }})</h5>
+      <div class="button-container">
+        <p>Price: {{ product.price }}$</p>
+        <button (click)="addToCart()" class="add">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
