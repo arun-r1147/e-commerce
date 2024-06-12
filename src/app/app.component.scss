@@ -1,0 +1,24 @@
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: blue;
+ 
+}
+
+nav a:hover {
+   font-weight: 600;
+}
+
+button {
+  margin: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+nav{
+    height: 38px;
+    background-color: aliceblue;
+    display: flex;
+    gap:20px;
+    align-items: center;
+    width: 100%;
+}
