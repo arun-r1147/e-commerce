@@ -1,0 +1,16 @@
+<div class="categories">
+    <h1>{{ category }}</h1>
+        <div class="category">
+    <div class="products" *ngFor="let product of products">
+      <a [routerLink]="['/product', product.id]">
+        <img [src]="product.image" [alt]="product.title" />
+        <div class="title">
+          <span>
+            {{ product.title }}
+          </span>
+          <h4>Price: {{ product.price }}$ </h4>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
