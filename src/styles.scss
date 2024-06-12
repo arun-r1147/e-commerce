@@ -1,1 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
+
+body,
+html {
+  height: 100%;
+  padding: 0;
+  margin: 0
+}
+
+body {
+  font-family: "Assistant", sans-serif;
+  color: #474747;
+}
+
+body ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  
+  body ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3.5px;
+  }
+  
+  body ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5025);
+    border-radius: 3.5px;
+  }
+  
+  body ::-webkit-scrollbar-thumb:hover {
+    background: rgb(143, 143, 143);
+  }
+
+
+button {
+  width: fit-content;
+  padding: 5px;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid gray;
+  background-color: #fff;
+  font-weight: 600;
+  height: 32px;
+  &:hover {
+    background-color: black;
+    color: #fff;
+  }
+  &.remove {
+    border-color: red;
+    background-color: #fff;
+    color: red;
+    &:hover {
+      background-color: red;
+      color: #fff;
+    }
+  }
+  &.add {
+    background-color: #fff;
+    border-color: rgb(19, 207, 19);
+    color: rgb(19, 207, 19);
+    &:hover {
+      background-color: rgb(19, 207, 19);
+      color: #fff;
+    }
+  }
+}
+
+select {
+  padding: 10px;
+  outline: none;
+  margin: 0 10px;
+}
