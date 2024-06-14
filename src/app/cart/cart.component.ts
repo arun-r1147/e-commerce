@@ -37,6 +37,13 @@ export class CartComponent {
   }
 
   getGrandTotal() {
-    this.grandTotal = this.cartService.calculateGrandTotal();
+    return this.cartService.calculateGrandTotal();
   }
+
+  updateQuantity(product: any) {
+    this.cartService.addToCart(product);
+  }
+
+  
+
 }
