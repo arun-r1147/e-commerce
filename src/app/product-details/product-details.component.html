@@ -1,8 +1,8 @@
-<div class="parent-container">
- <span></span>
+<div class="parent-container" *ngIf="product">
+  <span></span>
   <div class="product">
-    <img [src]="product.image??''" [alt]="product.title" />
-    <div class="product-details">
+    <img [src]="product.image" [alt]="product.title" />
+    <div class="product-details" >
       <h2>{{ product.title }}</h2>
       <p>{{ product.description }}</p>
       <h5>Rating: {{ product.rating.rate }}({{ product.rating.count }})</h5>
@@ -13,3 +13,4 @@
     </div>
   </div>
 </div>
+<div class="empty-state" *ngIf="!product">No product found!</div>

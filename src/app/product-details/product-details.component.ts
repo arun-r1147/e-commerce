@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductDetailsService } from './product-details.service';
 import { CartService } from '../cart/cart.service';
 import { ActivatedRoute } from '@angular/router';
-import { tap } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
+import { of, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-details',
@@ -22,27 +22,25 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   id = 0;
   ngOnInit(): void {
-    this.route.params
+    this.productSubscription = this.route.params
       .pipe(
-        tap((params) => {
-          this.id = parseInt(params['id']);
+        switchMap((res) => {
+          if (res) {
+            return this.productService.getProductById(res['id']);
+          }
+          return of();
         })
       )
-      .subscribe();
-
-    this.productSubscription = this.productService
-      .getProductById(this.id)
       .subscribe({
         next: (res) => {
           this.product = res;
-          
         },
       });
   }
 
   addToCart() {
-    this.cartService.addToCart({...this.product,count:1});
-    alert(`${this.product.title} added to the cart`)
+    this.cartService.addToCart({ ...this.product, count: 1 });
+    alert(`${this.product.title} added to the cart`);
   }
   ngOnDestroy(): void {
     this.productSubscription.unsubscribe();
