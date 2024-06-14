@@ -13,6 +13,7 @@ export class CartService implements OnInit {
     count: number;
   }[] = [];
   total = 0;
+  cartCount = 0;
   constructor() {}
   ngOnInit(): void {
     const savedCart = localStorage.getItem('cart');
@@ -34,9 +35,8 @@ export class CartService implements OnInit {
 
     if (existingProduct) {
       const index = this.cart.findIndex((i) => i.id === product.id);
-      existingProduct.count += product.count;
+      existingProduct.count += 1;
       this.cart[index] = { ...product, count: existingProduct.count };
-      console.log(' existingProduct', existingProduct);
     } else {
       this.cart.push({ ...product, count: 1 });
     }
@@ -44,9 +44,14 @@ export class CartService implements OnInit {
   }
 
   removeFromCart(product: any) {
-    const index = this.cart.indexOf(product);
-    if (index > -1) {
-      this.cart.splice(index, 1);
+    const index = this.cart.findIndex((item) => item.id === product.id);
+    if (index !== -1) {
+      const existingProduct = this.cart[index];
+      if (existingProduct.count > 1) {
+        existingProduct.count--;
+      } else {
+        this.cart.splice(index, 1);
+      }
       localStorage.setItem('cart', JSON.stringify(this.cart));
     }
   }
@@ -60,10 +65,10 @@ export class CartService implements OnInit {
     this.total = price * count;
     return price * count;
   }
-  
+
   calculateGrandTotal() {
     return this.cart.reduce(
-      (total, item) => total + this.total,
+      (total, item) => total + item.price * item.count,
       0
     );
   }

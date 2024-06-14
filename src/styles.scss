@@ -63,6 +63,17 @@ button {
       color: #fff;
     }
   }
+  &.small{
+    width: fit-content;
+    height: auto;
+    background-color: #fff;
+    color: #000;
+    margin: 0 3px;
+    &:hover{
+      background-color: #000;
+      color:#fff ;
+    }
+  }
 }
 
 select {

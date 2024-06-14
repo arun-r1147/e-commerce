@@ -9,7 +9,9 @@
           <h4>{{ item.price }}$</h4>
           <div class="qunatity">
             <span>quantity:</span>
-            <span>{{ " " }}{{ item.count }}</span>
+            <button class="small" (click)="removeFromCart(item)">-</button>
+            <span>{{ " " }}{{ item.count }}{{ " " }}</span>
+            <button class="small" (click)="updateQuantity(item)">+</button>
           </div>
           <span class="total"
             >Total Price:{{ " "
@@ -20,8 +22,8 @@
       <button (click)="removeFromCart(item)" class="remove">Remove</button>
     </div>
     <div class="button-container">
-      <button (click)="clearCart()">Clear Cart</button>
-      <!-- <div class="grand-total">Grand Total:{{grandTotal}}</div> -->
+      <button (click)="clearCart()" class="clear">Clear Cart</button>
+      <div class="grand-total">Grand Total:{{ getGrandTotal() }}</div>
     </div>
   </div>
   <div *ngIf="cartItems.length == 0">

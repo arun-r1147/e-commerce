@@ -2,11 +2,10 @@ nav a {
   margin: 0 10px;
   text-decoration: none;
   color: blue;
- 
 }
 
 nav a:hover {
-   font-weight: 600;
+  font-weight: 600;
 }
 
 button {
@@ -14,11 +13,27 @@ button {
   padding: 5px 10px;
   cursor: pointer;
 }
-nav{
-    height: 38px;
-    background-color: aliceblue;
+nav {
+  height: 38px;
+  background-color: aliceblue;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+
+  .count {
+    background-color: red;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
     display: flex;
-    gap:20px;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    top: -10px;
+    left: 123px;
+  }
 }

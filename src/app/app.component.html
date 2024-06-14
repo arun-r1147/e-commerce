@@ -1,5 +1,6 @@
 <nav>
   <a routerLink="/">Home</a>
   <a routerLink="/cart">Cart</a>
+  <p class="count" *ngIf="count > 0">{{ count }}</p>
 </nav>
 <router-outlet></router-outlet>
